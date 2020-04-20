@@ -100,6 +100,15 @@ class TestDetails(unittest.TestCase):
 
         self.assertEqual(Details.display_details(),Details.details_list)
 
+    def test_copy_email(self):
+        '''
+        Test to confirm that we are copying the email address from a found account details of a contact
+        '''
+
+        self.new_details.save_details()
+        Details.copy_email("testname")
+
+        self.assertEqual(self.new_contact.email,pyperclip.paste())
 
 if __name__ == '__main__':
     unittest.main()

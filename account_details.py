@@ -68,6 +68,11 @@ class Details:
         '''
         return cls.details_list
 
+    @classmethod
+    def copy_email(cls,username):
+        details_found = Details.find_by_username(username)
+        pyperclip.copy(Details_found.email)
+
     
 
         
