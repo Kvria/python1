@@ -2,7 +2,7 @@ class Details:
     """
     Class that generates new instances of account details.
     """
-    details_list = [] # Empty contact list
+    details_list = [] # Empty list
 
     def __init__(self, first_name, last_name, number, email,email_password,facebook_name,facebook_password,instagram_name,instagram_password,twitter_name,twitter_password):
 
