@@ -13,7 +13,7 @@ class TestDetails(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_details = Details("Sonic","Hedgehog","0712345678","sonic@ms.com","hhogsonic","h-hog","decibels","sonic-h","hogtheG","iamsonic","son-hog")
+        self.new_details = Details("Sonic","Hedgehog","0712345678","sonic@ms.com","hogtheG","instagram","h-hog","sonic-h")
     
     def tearDown(self):
         '''
@@ -30,21 +30,56 @@ class TestDetails(unittest.TestCase):
         self.assertEqual(self.new_details.last_name,"Hedgehog")
         self.assertEqual(self.new_details.phone_number,"0712345678")
         self.assertEqual(self.new_details.email,"sonic@ms.com")
-        self.assertEqual(self.new_details.email_password,"hhogsonic")
-        self.assertEqual(self.new_details.facebook_name,"h-hog")
-        self.assertEqual(self.new_details.facebook_password,"decibels")
-        self.assertEqual(self.new_details.twitter_name,"sonic-h")
-        self.assertEqual(self.new_details.twitter_password,"hogtheG")
-        self.assertEqual(self.new_details.instagram_name,"iamsonic")
-        self.assertEqual(self.new_details.instagram_password,"son-hog")
+        self.assertEqual(self.new_details.email_password,"hogtheG")
+        self.assertEqual(self.new_details.account_name,"instagram")
+        self.assertEqual(self.new_details.username,"h-hog")
+        self.assertEqual(self.new_details.password,"sonic-h")
+    
 
-    def save_details(self):
 
+    def test_save_details(self):
         '''
-        save_details method saves contact objects into details_list
+        test_save_details test case to test if the details object is saved into
+        the details list
+        '''
+        self.new_details.save_details() # saving the new account details
+        self.assertEqual(len(Details.details_list),1)
+
+    def test_save_multiple_details(self):
+        '''
+        test_save_multiple_details to check if we can save multiple details
+        objects to our details_list
+        '''
+        self.new_details.save_details()
+        test_details = Details("Test","user","0712345678","test@user.com","hhdhdh","facebook","testname","password") # new account details
+        test_details.save_details()
+        self.assertEqual(len(Details.details_list),2)
+
+    def test_delete_details(self):
+        '''
+        test_delete_details to test if we can remove details from our details list
+        '''
+        self.new_details.save_details()
+        test_details = Details("Test","user","0712345678","test@user.com","hhdhdh","facebook","testname","password") # new account details
+        test_details.save_details()
+
+        self.new_details.delete_details()# Deleting details object
+        self.assertEqual(len(Details.details_list),1)
+       
+
+    def test_find_details_by_username(self):
+        '''
+        test to check if we can find a details by any username and display information
         '''
 
-        Details.details_list.append(self)
+        self.new_details.save_details()
+        test_details = Details("Test","user","0712345678","test@user.com","hhdhdh","facebook","testname","password")
+        test_details.save_details()
+
+        found_details = Details.find_by_username("testname") 
+       
+        self.assertEqual(found_details.email,test_details.email)
+    
 
 if __name__ == '__main__':
     unittest.main()
