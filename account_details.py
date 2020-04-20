@@ -46,7 +46,20 @@ class Details:
             if details.username == username:
                 return details
 
-    
+    @classmethod
+    def details_exist(cls,username):
+        '''
+        Method that checks if a contact exists from the contact list.
+        Args:
+            username: username to search if it exists
+        Returns :
+            Boolean: True or false depending if the contact exists
+        '''
+        for details in cls.details_list:
+            if details.username == username:
+                    return True
+
+        return False
     
 
         

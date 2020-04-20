@@ -73,13 +73,25 @@ class TestDetails(unittest.TestCase):
         '''
 
         self.new_details.save_details()
-        test_details = Details("Test","user","0712345678","test@user.com","hhdhdh","facebook","testname","password")
+        test_details = Details("Test","user","0712345678","test@user.com","hhdhdh","facebook","testname","password") 
         test_details.save_details()
 
         found_details = Details.find_by_username("testname") 
        
         self.assertEqual(found_details.email,test_details.email)
     
+    def test_details_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the account details.
+        '''
+
+        self.new_details.save_details()
+        test_details = Details("Test","user","0711223344","test@user.com","hhdhdh","facebook","testname","password") # new contact
+        test_details.save_details()
+
+        details_exists = Details.details_exist("testname")
+
+        self.assertTrue(details_exists)
 
 if __name__ == '__main__':
     unittest.main()
