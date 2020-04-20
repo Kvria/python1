@@ -31,9 +31,21 @@ class TestDetails(unittest.TestCase):
         self.assertEqual(self.new_details.phone_number,"0712345678")
         self.assertEqual(self.new_details.email,"sonic@ms.com")
         self.assertEqual(self.new_details.email_password,"hhogsonic")
-        self.assertEqual(self.new_details.facebook_name,"sonic-h")
-        self.assertEqual(self.new_details.facebook_password,"hogtheG")
-        self.assertEqual(self.new_details.twitter_name,"iamsonic")
-        self.assertEqual(self.new_details.twitter_password,"son-hog")
-        self.assertEqual(self.new_details.instagram_name,"h-hog")
-        self.assertEqual(self.new_details.instagram_password,"decibels")
+        self.assertEqual(self.new_details.facebook_name,"h-hog")
+        self.assertEqual(self.new_details.facebook_password,"decibels")
+        self.assertEqual(self.new_details.twitter_name,"sonic-h")
+        self.assertEqual(self.new_details.twitter_password,"hogtheG")
+        self.assertEqual(self.new_details.instagram_name,"iamsonic")
+        self.assertEqual(self.new_details.instagram_password,"son-hog")
+
+    def save_details(self):
+
+        '''
+        save_details method saves contact objects into details_list
+        '''
+
+        Details.details_list.append(self)
+
+if __name__ == '__main__':
+    unittest.main()
+    
