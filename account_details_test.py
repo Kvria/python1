@@ -1,5 +1,6 @@
 import unittest # Importing the unittest module
 from account_details import Details # Importing the account details
+import pyperclip
 
 class TestDetails(unittest.TestCase):
 

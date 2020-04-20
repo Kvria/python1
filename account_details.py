@@ -1,3 +1,5 @@
+import pyperclip
+
 class Details:
     """
     Class that generates new instances of account details.
