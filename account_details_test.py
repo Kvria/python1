@@ -14,3 +14,11 @@ class TestDetails(unittest.TestCase):
         Set up method to run before each test cases.
         '''
         self.new_contact = Details("Sonic","Hedgehog","0712345678","sonic@ms.com","hhogsonic","h-hog","decibels","sonic-h","hogtheG","iamsonic","son-hog")
+    
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test case has run.
+        '''
+        Details.details_list = []
+    
+    
