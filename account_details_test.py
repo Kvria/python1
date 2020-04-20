@@ -93,6 +93,14 @@ class TestDetails(unittest.TestCase):
 
         self.assertTrue(details_exists)
 
+    def test_display_all_details(self):
+        '''
+        method that returns a list of all account details saved
+        '''
+
+        self.assertEqual(Details.display_details(),Details.details_list)
+
+
 if __name__ == '__main__':
     unittest.main()
     

@@ -60,6 +60,14 @@ class Details:
                     return True
 
         return False
+
+    @classmethod
+    def display_details(cls):
+        '''
+        method that returns the contact list
+        '''
+        return cls.details_list
+
     
 
         
