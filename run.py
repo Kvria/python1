@@ -77,98 +77,129 @@ def create_acc_password():
 
 def main():
         print("Hello, Welcome to PASSWORD LOCKER!")
-        print("Kindly log in.")
-        print('\n')
-        print ("First name ....")
-        f_name = input()
-
-        print("Last name ...")
-        l_name = input()
-
-        print("Login username...")
-        login_name = input()
-
-        print("Login password...")
-        login_password = input()
 
         while True:
-                print("Welcome.....")
-                print("Use these short codes : cc - create a new account details, dc - display account details, fc -find a account details, dl - delete account details,ex -exit the account details list ")
+                print("What do you want to do? Use these short codes: li - log in, su - sign up")
 
                 short_code = input().lower()
 
-                if short_code == 'cc':
-                        print("Email address...")
-                        email = input()
+                if short_code == 'su':
+                        print('\n')
+                        print ("First name ....")
+                        f_name = input()
 
-                        print("Account type e.g instagram, facebook ...")
-                        acc_type = input()
+                        print("Last name ...")
+                        l_name = input()
 
-                        print("Username ...")
-                        u_name = input()
+                        print("Login username...")
+                        login_name = input()
 
-                        print("Password ...")
-                        print("Would you like to fill in your own password or be created for?")
+                        print("Login password...")
+                        login_password = input()
 
-                        print("Use these short codes: cn - create new password, cf - created for")
+                        save_user(create_user(f_name,l_name,login_name,login_password))
+
+                        print("Account created!")
+
+                elif short_code == 'li':
+
+                        print("Login username...")
+                        login_name = input()
+
+                        print("Login password...")
+                        login_password = input() 
+
+                        if check_existing_user(login_name):
+                                print("Welcome.....")
+                                while True:
+ 
+                                 print("Use these short codes : cc - create a new account details, dd - display account details, fd -find a account details, dl - delete account details,ex -exit the account details list ")
+                                 short_code = input().lower()
                         
-                        short_code = input().lower()
 
-                        if short_code == 'cf':
-                                acc_password = create_acc_password()
-                                print(acc_password)
+                                 if short_code == 'cc':
+                                        print("Email address...")
+                                        email = input()
 
-                        elif short_code == 'cn':
-                                acc_password = input()
+                                        print("Account type e.g instagram, facebook ...")
+                                        acc_type = input()
 
+                                        print("Username ...")
+                                        u_name = input()
 
-                        save_details( create_details(f_name,l_name,login_name,login_password,email,acc_type,u_name,acc_password)) # create and save new account details.
-                        print ('\n')
-                        print(f"New account details {f_name} {l_name} {acc_type}  {u_name} {acc_password} created")
-                        print ('\n')
+                                        print("Password ...")
+                                        print("Would you like to fill in your own password or be created for one?")
 
-                elif short_code == 'dc':
+                                        while True:
 
-                        if display_details():
-                                print("Here is a list of all your account details")
-                                print('\n')
+                                           print("Use these short codes: cn - create new password, cf - created for")
+                                           short_code = input().lower()
+                                        
+                                           if short_code == 'cf':
+                                                acc_password = create_acc_password()
+                                                print(acc_password)
+                                                break
 
-                                for Details in display_details():
-                                        print(f"{Details.first_name} {Details.last_name} {Details.acc_type} {Details.u_name} {Details.acc_password}")
+                                           elif short_code == 'cn':
+                                                acc_password = input()
 
-                                print('\n')
-                        
-                        else:
-                                print('\n')
-                                print("You dont seem to have any account details saved yet")
-                                print('\n')
+                                                break
+                                        save_details(create_details(email,acc_type,u_name,acc_password)) # create and save new account details.
+                                        print ('\n')
+                                        print(f"New account details {acc_type}  {u_name} {acc_password} created")
+                                        print ('\n')
 
-                elif short_code == 'fc':
+                                 elif short_code == 'dd':
 
-                        print("Enter the username you want to search for")
+                                        if display_details():
+                                                print("Here is a list of all your account details")
+                                                print('\n')
 
-                        search_username = input()
-                        if check_existing_details(search_username):
-                                search_details = find_details(search_username)
-                                print(f"{search_details.first_name} {search_details.last_name}")
-                                print('-' * 20)
+                                                for Details in display_details():
+                                                        print(f" {Details.account_type} {Details.username} {Details.acc_password}")
 
-                                print(f"Account type.......{search_details.acc_type}")
-                                print(f"Username.......{search_details.u_name}")
-                                print(f"Password.......{search_details.acc_password}")
-                        else:
-                                print("That contact does not exist")
+                                                print('\n')
+                                        
+                                        else:
+                                                print('\n')
+                                                print("You dont seem to have any account details saved yet")
+                                                print('\n')
 
-                elif short_code == 'dl':
-                                delete_details = del_details()
+                                 elif short_code == 'fd':
 
-                elif short_code == "ex":
-                        print("Have a nice day .......")
-                        break
-                else:
-                        print("I really didn't get that. Please use the short codes")
+                                        print("Enter the username you want to search for")
+ 
+                                        search_username = input()
+                                        if check_existing_details(search_username):
+                                                search_details = find_details(search_username)
+                                                print(f"{search_details.email} ")
+                                                print('-' * 20)
 
-                break 
+                                                print(f"Account type.......{search_details.account_type}")
+                                                print(f"Username.......{search_details.username}")
+                                                print(f"Password.......{search_details.acc_password}")
+                                        else:
+                                                print("That credential does not exist")
+                                                
+
+                                 elif short_code == 'dl':
+                                        print("Which account details do you want to delete?") 
+                                        search_username = input()    
+                                        if check_existing_details(search_username):
+                                           search_details = find_details(search_username)
+                                           del_details(search_details)
+                                           print("Account details has been deleted.")
+
+                                        else:
+                                           print("There are no account details to delete.")
+
+                                 elif short_code == "ex":
+                                        print("Have a nice day .......")
+                                        break
+                                 else:
+                                        print("I really didn't get that. Please use the short codes")
+
+                                
 
 if __name__ == '__main__':
 

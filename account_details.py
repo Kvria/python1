@@ -6,7 +6,6 @@ class Details:
 
     def __init__(self,email,account_type,username,acc_password):
 
-    
         self.email = email
         self.account_type = account_type
         self.username = username
