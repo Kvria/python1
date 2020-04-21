@@ -1,21 +1,19 @@
-import pyperclip
-
 class Details:
     """
     Class that generates new instances of account details.
     """
     details_list = [] # Empty list
 
-    def __init__(self, first_name, last_name, number, email,email_password,account_type,username,password):
+    def __init__(self, first_name, last_name, login_name,login_password,email,account_type,username,acc_password):
 
         self.first_name = first_name
         self.last_name = last_name
-        self.phone_number = number
+        self.login_name = login_name
+        self.login_password = login_password
         self.email = email
-        self.email_password = email_password
         self.account_type = account_type
         self.username = username
-        self.password = password
+        self.acc_password = acc_password
         
     def save_details(self):
 

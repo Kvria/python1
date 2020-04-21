@@ -13,7 +13,7 @@ class TestDetails(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_details = Details("Sonic","Hedgehog","0712345678","sonic@ms.com","hogtheG","instagram","h-hog","sonic-h")
+        self.new_details = Details("Sonic","Hedgehog","hhogtheG","sonicunder","sonic@mns.com","instagram","h-hog","sonic-h")
     
     def tearDown(self):
         '''
@@ -28,12 +28,12 @@ class TestDetails(unittest.TestCase):
 
         self.assertEqual(self.new_details.first_name,"Sonic")
         self.assertEqual(self.new_details.last_name,"Hedgehog")
-        self.assertEqual(self.new_details.phone_number,"0712345678")
-        self.assertEqual(self.new_details.email,"sonic@ms.com")
-        self.assertEqual(self.new_details.email_password,"hogtheG")
+        self.assertEqual(self.new_details.login_name,"hhogtheG")
+        self.assertEqual(self.new_details.login_password,"sonicunder")
+        self.assertEqual(self.new_details.email,"sonic@mns.com")
         self.assertEqual(self.new_details.account_type,"instagram")
         self.assertEqual(self.new_details.username,"h-hog")
-        self.assertEqual(self.new_details.password,"sonic-h")
+        self.assertEqual(self.new_details.acc_password,"sonic-h")
     
 
 
@@ -51,7 +51,7 @@ class TestDetails(unittest.TestCase):
         objects to our details_list
         '''
         self.new_details.save_details()
-        test_details = Details("Test","user","0712345678","test@user.com","hhdhdh","facebook","testname","password") # new account details
+        test_details = Details("Test","user","login-name","login-password","test@user.com","facebook","testname","password") # new account details
         test_details.save_details()
         self.assertEqual(len(Details.details_list),2)
 
@@ -60,7 +60,7 @@ class TestDetails(unittest.TestCase):
         test_delete_details to test if we can remove details from our details list
         '''
         self.new_details.save_details()
-        test_details = Details("Test","user","0712345678","test@user.com","hhdhdh","facebook","testname","password") # new account details
+        test_details = Details("Test","user","login-name","login-password","test@user.com","facebook","testname","password") # new account details
         test_details.save_details()
 
         self.new_details.delete_details()# Deleting details object
@@ -73,7 +73,7 @@ class TestDetails(unittest.TestCase):
         '''
 
         self.new_details.save_details()
-        test_details = Details("Test","user","0712345678","test@user.com","hhdhdh","facebook","testname","password") 
+        test_details = Details("Test","user","login-name","login-password","test@user.com","facebook","testname","password") 
         test_details.save_details()
 
         found_details = Details.find_by_username("testname") 
@@ -86,7 +86,7 @@ class TestDetails(unittest.TestCase):
         '''
 
         self.new_details.save_details()
-        test_details = Details("Test","user","0711223344","test@user.com","hhdhdh","facebook","testname","password") # new contact
+        test_details = Details("Test","user","login-name","login-password","test@user.com","facebook","testname","password") # new contact
         test_details.save_details()
 
         details_exists = Details.details_exist("testname")
