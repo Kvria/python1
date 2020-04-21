@@ -1,6 +1,5 @@
 import unittest # Importing the unittest module
 from account_details import Details # Importing the account details
-import pyperclip
 
 class TestDetails(unittest.TestCase):
 
@@ -32,7 +31,7 @@ class TestDetails(unittest.TestCase):
         self.assertEqual(self.new_details.phone_number,"0712345678")
         self.assertEqual(self.new_details.email,"sonic@ms.com")
         self.assertEqual(self.new_details.email_password,"hogtheG")
-        self.assertEqual(self.new_details.account_name,"instagram")
+        self.assertEqual(self.new_details.account_type,"instagram")
         self.assertEqual(self.new_details.username,"h-hog")
         self.assertEqual(self.new_details.password,"sonic-h")
     
@@ -101,16 +100,7 @@ class TestDetails(unittest.TestCase):
 
         self.assertEqual(Details.display_details(),Details.details_list)
 
-    def test_copy_email(self):
-        '''
-        Test to confirm that we are copying the email address from a found account details of a contact
-        '''
-
-        self.new_details.save_details()
-        Details.copy_email("testname")
-
-        self.assertEqual(self.new_contact.email,pyperclip.paste())
-
+    
 if __name__ == '__main__':
     unittest.main()
     

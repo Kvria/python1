@@ -6,14 +6,14 @@ class Details:
     """
     details_list = [] # Empty list
 
-    def __init__(self, first_name, last_name, number, email,email_password,account_name,username,password):
+    def __init__(self, first_name, last_name, number, email,email_password,account_type,username,password):
 
         self.first_name = first_name
         self.last_name = last_name
         self.phone_number = number
         self.email = email
         self.email_password = email_password
-        self.account_name = account_name
+        self.account_type = account_type
         self.username = username
         self.password = password
         
@@ -70,10 +70,7 @@ class Details:
         '''
         return cls.details_list
 
-    @classmethod
-    def copy_email(cls,username):
-        details_found = Details.find_by_username(username)
-        pyperclip.copy(Details_found.email)
+    
 
     
 
