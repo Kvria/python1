@@ -4,7 +4,7 @@ class User:
     """
     users_list = [] # Empty list
 
-    def __init__(self, first_name, last_name, login_name , login_password):
+    def __init__(self,first_name,last_name,login_name,login_password):
 
         self.first_name = first_name
         self.last_name = last_name
@@ -30,7 +30,22 @@ class User:
     @classmethod
     def find_by_login_name(cls,login_name):
         '''
-        Method that takes in a username and returns a contact that matches that number.
+        Method that takes in a login username and returns a contact that matches that number.
+
+        Args:
+            login_name: login_name to search for
+        Returns :
+            Account details of person that matches the username.
+        '''
+
+        for User in cls.users_list:
+            if User.login_name == login_name:
+                return User
+
+    @classmethod
+    def user_exists(cls,login_name):
+        '''
+        Method that takes in a  login username and returns a contact that matches that number.
 
         Args:
             login_name: login_name to search for
@@ -40,4 +55,8 @@ class User:
 
         for user in cls.users_list:
             if user.login_name == login_name:
-                return user
+                return True
+
+        return False
+            
+    

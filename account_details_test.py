@@ -83,7 +83,7 @@ class TestDetails(unittest.TestCase):
         '''
 
         self.new_details.save_details()
-        test_details = Details("Test","user","login-name","login-password","test@user.com","facebook","testname","password") # new contact
+        test_details = Details ("test@user.com","facebook","testname","password") # new contact
         test_details.save_details()
 
         details_exists = Details.details_exist("testname")

@@ -3,11 +3,36 @@ from account_details import Details
 from account_user import User
 import random
 
-def create_details(fname,lname,login_name,login_password, email,acc_type,u_name,acc_password):
+def create_user(first_name,last_name,login_name,login_password):
+    '''
+    Function to create a new user details
+    '''
+    new_user = User(first_name,last_name,login_name,login_password)
+    return new_user
+
+def save_user(User):
+    '''
+    Function to save the users details
+    '''
+    User.save_user()
+
+def find_user(login_name):
+    '''
+    Function that finds user by login_name and returns the users details
+    '''
+    return User.find_by_login_name(login_name)
+
+def check_existing_user(login_name):
+    '''
+    Function that check if users details exist with that  login username and return a Boolean
+    '''
+    return User.user_exists(login_name)
+
+def create_details(email,acc_type,u_name,acc_password):
     '''
     Function to create a new account detail
     '''
-    new_details = Details(fname,lname,login_name,login_password, email,acc_type,u_name,acc_password)
+    new_details = Details( email,acc_type,u_name,acc_password)
     return new_details
 
 def save_details(Details):
