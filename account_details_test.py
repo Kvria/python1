@@ -1,5 +1,6 @@
 import unittest # Importing the unittest module
 from account_details import Details # Importing the account details
+import random
 
 class TestDetails(unittest.TestCase):
 
@@ -100,6 +101,7 @@ class TestDetails(unittest.TestCase):
 
         self.assertEqual(Details.display_details(),Details.details_list)
 
+    
     
 if __name__ == '__main__':
     unittest.main()

@@ -1,3 +1,5 @@
+import random
+
 class Details:
     """
     Class that generates new instances of account details.
@@ -69,7 +71,6 @@ class Details:
         return cls.details_list
 
     
-
     
 
         

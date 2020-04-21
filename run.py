@@ -17,7 +17,7 @@ def save_details(Details):
 
 def del_details(Details):
     '''
-    Function to delete account details
+    Function to delete account details      
     '''
     Details.delete_details()
 
@@ -39,6 +39,16 @@ def display_details():
     '''
     return Details.display_details()
 
+def create_acc_password():
+    acc_password = ""
+    num = "0123456789"
+    letters = "abecdefghijklmnopqrstuvwxyz"
+        
+    for x in range(4):
+        acc_password += random.choice(num) + random.choice(letters)
+
+    return acc_password
+
 def main():
         print("Hello, Welcome to PASSWORD LOCKER!")
         print("Kindly log in.")
@@ -57,7 +67,7 @@ def main():
 
         while True:
                 print("Welcome.....")
-                print("Use these short codes : cc - create a new account details, dc - display account details, fc -find a account details, ex -exit the account details list ")
+                print("Use these short codes : cc - create a new account details, dc - display account details, fc -find a account details, dl - delete account details,ex -exit the account details list ")
 
                 short_code = input().lower()
 
@@ -79,14 +89,14 @@ def main():
                         short_code = input().lower()
 
                         if short_code == 'cf':
-                                acc_password = acc_password.randint(100000000-9999999999)
+                                acc_password = create_acc_password()
                                 print(acc_password)
 
                         elif short_code == 'cn':
                                 acc_password = input()
 
 
-                        save_details( create_details(f_name,l_name,login_name,email,login_password,acc_type,u_name,acc_password)) # create and save new account details.
+                        save_details( create_details(f_name,l_name,login_name,login_password,email,acc_type,u_name,acc_password)) # create and save new account details.
                         print ('\n')
                         print(f"New account details {f_name} {l_name} {acc_type}  {u_name} {acc_password} created")
                         print ('\n')
@@ -101,6 +111,7 @@ def main():
                                         print(f"{Details.first_name} {Details.last_name} {Details.acc_type} {Details.u_name} {Details.acc_password}")
 
                                 print('\n')
+                        
                         else:
                                 print('\n')
                                 print("You dont seem to have any account details saved yet")
@@ -121,6 +132,9 @@ def main():
                                 print(f"Password.......{search_details.acc_password}")
                         else:
                                 print("That contact does not exist")
+
+                elif short_code == 'dl':
+                                delete_details = del_details()
 
                 elif short_code == "ex":
                         print("Have a nice day .......")
