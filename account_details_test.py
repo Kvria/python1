@@ -57,7 +57,7 @@ class TestDetails(unittest.TestCase):
         test_delete_details to test if we can remove details from our details list
         '''
         self.new_details.save_details()
-        test_details = Details("Test","user","login-name","login-password","test@user.com","facebook","testname","password") # new account details
+        test_details = Details("test@user.com","facebook","testname","password") # new account details
         test_details.save_details()
 
         self.new_details.delete_details()# Deleting details object
@@ -69,8 +69,8 @@ class TestDetails(unittest.TestCase):
         test to check if we can find a details by any username and display information
         '''
 
-        self.new_details.save_details()
-        test_details = Details("Test","user","login-name","login-password","test@user.com","facebook","testname","password") 
+        self.new_details.save_details(),
+        test_details = Details("test@user.com","facebook","testname","password") 
         test_details.save_details()
 
         found_details = Details.find_by_username("testname") 

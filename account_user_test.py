@@ -35,7 +35,7 @@ class TestUser(unittest.TestCase):
         objects to our details_list
         '''
         self.new_user.save_user()
-        test_user = User("test@user.com","facebook","testname","password") # new account details
+        test_user = User("Test","user","login-name","login-password") # new users details
         test_user.save_user()
         self.assertEqual(len(User.users_list),2)
 
@@ -46,6 +46,20 @@ class TestUser(unittest.TestCase):
         self.new_user.save_user()
         test_user = User("Test","user","login-name","login-password") # new users details
         test_user.save_user()
+
+    def test_find_details_by_login_name(self):
+        '''
+        test to check if we can find a details by any login_name and display information
+        '''
+
+        self.new_user.save_user()
+        test_user = User("Test","user","login-name","login-password") 
+        test_user.save_user()
+
+        found_user = User.find_by_login_name("login-name") 
+       
+        self.assertEqual(found_user.first_name,test_user.first_name)
+    
 
 if __name__ == '__main__':
     unittest.main()

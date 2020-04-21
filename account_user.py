@@ -26,3 +26,18 @@ class User:
         '''
 
         User.users_list.remove(self)
+
+    @classmethod
+    def find_by_login_name(cls,login_name):
+        '''
+        Method that takes in a username and returns a contact that matches that number.
+
+        Args:
+            login_name: login_name to search for
+        Returns :
+            Account details of person that matches the username.
+        '''
+
+        for user in cls.users_list:
+            if user.login_name == login_name:
+                return user
