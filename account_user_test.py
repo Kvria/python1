@@ -15,7 +15,7 @@ class TestUser(unittest.TestCase):
         '''
         self.new_user = User("Sonic","Hedgehog","hhogtheG","sonicunder")
 
-     def tearDown(self):
+    def tearDown(self):
         '''
         tearDown method that does clean up after each test case has run.
         '''
@@ -26,8 +26,26 @@ class TestUser(unittest.TestCase):
         test_save_users test case to test if the details object is saved into
         the users list
         '''
-        self.new_user.test_save_user() # saving the new users details
+        self.new_user.save_user() # saving the new users details
         self.assertEqual(len(User.users_list),1)  
+
+    def test_save_multiple_users(self):
+        '''
+        test_save_multiple_details to check if we can save multiple details
+        objects to our details_list
+        '''
+        self.new_user.save_user()
+        test_user = User("test@user.com","facebook","testname","password") # new account details
+        test_user.save_user()
+        self.assertEqual(len(User.users_list),2)
+
+    def test_delete_user(self):
+        '''
+        test_delete_user to test if we can remove details from our users list
+        '''
+        self.new_user.save_user()
+        test_user = User("Test","user","login-name","login-password") # new users details
+        test_user.save_user()
 
 if __name__ == '__main__':
     unittest.main()

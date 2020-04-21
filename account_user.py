@@ -18,3 +18,11 @@ class User:
         '''
 
         User.users_list.append(self)
+
+    def delete_user(self):
+
+        '''
+        delete_contact method deletes a saved contact from the contact_list
+        '''
+
+        User.users_list.remove(self)
