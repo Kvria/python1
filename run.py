@@ -76,47 +76,63 @@ def main():
                     u_name = input()
 
                     print("Password ...")
-                    print("Would you like to c")
-                    acc_password = input()
+                    print("Would you like to fill in your own password or be created for?")
 
+                    while True:
+                        print("Use these short codes: cn - create new password, cf - created for")
+                        
+                        short_code = input().lower()
+
+                        if short_code == 'cn':
+                            acc_password = random.randint(0,999999999)
+                            print(acc_password)
+
+                        elif short_code == input().lower()
+                            acc_password = input()
+
+                        else:
+                            print("I really didn't get that. Please use the short codes")
 
                     save_details(create_details(f_name,l_name,p_number,e_address,e_password,acc_type,u_name,acc_password)) # create and save new contact.
                     print ('\n')
-                    print(f"New account details {f_name} {l_name} {acc_type} {u_name} {password} created")
+                    print(f"New account details {f_name} {l_name} {acc_type} {u_name} {acc_password} created")
                     print ('\n')
 
             elif short_code == 'dc':
 
-                    if display_contacts():
-                            print("Here is a list of all your contacts")
+                    if display_details():
+                            print("Here is a list of all your account details")
                             print('\n')
 
-                            for contact in display_contacts():
-                                    print(f"{contact.first_name} {contact.last_name} .....{contact.phone_number}")
+                            for Details in display_details():
+                                    print(f"{details.first_name} {details.last_name} {details.acc_type} {details.u_name} {details.acc_password}")
 
                             print('\n')
                     else:
                             print('\n')
-                            print("You dont seem to have any contacts saved yet")
+                            print("You dont seem to have any account details saved yet")
                             print('\n')
 
             elif short_code == 'fc':
 
-                    print("Enter the number you want to search for")
+                    print("Enter the username you want to search for")
 
-                    search_number = input()
-                    if check_existing_contacts(search_number):
-                            search_contact = find_contact(search_number)
-                            print(f"{search_contact.first_name} {search_contact.last_name}")
+                    search_username = input()
+                    if check_existing_details(search_details):
+                            search_details = find_details(search_details)
+                            print(f"{search_details.first_name} {search_details.last_name}")
                             print('-' * 20)
 
-                            print(f"Phone number.......{search_contact.phone_number}")
-                            print(f"Email address.......{search_contact.email}")
+                            print(f"Phone number.......{search_details.phone_number}")
+                            print(f"Email address.......{search_details.email}")
+                            print(f"Account type.......{search_details.acc_type}")
+                            print(f"Username.......{search_details.u_name}")
+                            print(f"Password.......{search_details.acc_password}")
                     else:
                             print("That contact does not exist")
 
             elif short_code == "ex":
-                    print("Bye .......")
+                    print("Have a nice day .......")
                     break
             else:
                     print("I really didn't get that. Please use the short codes")
