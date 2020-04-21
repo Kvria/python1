@@ -14,7 +14,7 @@ class TestDetails(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_details = Details("Sonic","Hedgehog","hhogtheG","sonicunder","sonic@mns.com","instagram","h-hog","sonic-h")
+        self.new_details = Details("sonic@mns.com","instagram","h-hog","sonic-h")
     
     def tearDown(self):
         '''
@@ -27,10 +27,6 @@ class TestDetails(unittest.TestCase):
         test_init test case to test if the object is initialized properly
         '''
 
-        self.assertEqual(self.new_details.first_name,"Sonic")
-        self.assertEqual(self.new_details.last_name,"Hedgehog")
-        self.assertEqual(self.new_details.login_name,"hhogtheG")
-        self.assertEqual(self.new_details.login_password,"sonicunder")
         self.assertEqual(self.new_details.email,"sonic@mns.com")
         self.assertEqual(self.new_details.account_type,"instagram")
         self.assertEqual(self.new_details.username,"h-hog")
@@ -52,7 +48,7 @@ class TestDetails(unittest.TestCase):
         objects to our details_list
         '''
         self.new_details.save_details()
-        test_details = Details("Test","user","login-name","login-password","test@user.com","facebook","testname","password") # new account details
+        test_details = Details("test@user.com","facebook","testname","password") # new account details
         test_details.save_details()
         self.assertEqual(len(Details.details_list),2)
 

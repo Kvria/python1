@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.6
 from account_details import Details
+from account_user import User
 import random
 
 def create_details(fname,lname,login_name,login_password, email,acc_type,u_name,acc_password):

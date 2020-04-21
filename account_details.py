@@ -6,12 +6,9 @@ class Details:
     """
     details_list = [] # Empty list
 
-    def __init__(self, first_name, last_name, login_name,login_password,email,account_type,username,acc_password):
+    def __init__(self,email,account_type,username,acc_password):
 
-        self.first_name = first_name
-        self.last_name = last_name
-        self.login_name = login_name
-        self.login_password = login_password
+        
         self.email = email
         self.account_type = account_type
         self.username = username
